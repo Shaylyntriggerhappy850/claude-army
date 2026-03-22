@@ -180,6 +180,7 @@ sequenceDiagram
     participant O as Orchestrator
     participant R as Researcher
     participant B as Builder
+    participant T as Test Writer
     participant V as Reviewer
     participant C as Challenger
     participant S as Submitter
@@ -187,6 +188,9 @@ sequenceDiagram
     rect rgb(240, 244, 248)
         Note over O,R: Phase 1 — Research
         O->>R: Gather & verify information
+        R->>R: Cross-reference sources
+        R->>R: Verify URLs accessible
+        R->>R: Prove algorithms step-by-step
         R-->>O: Findings with verification status
     end
 
@@ -194,24 +198,35 @@ sequenceDiagram
     You->>O: Confirmed
 
     rect rgb(240, 248, 240)
-        Note over O,B: Phase 2 — Build
+        Note over O,T: Phase 2 — Build & Test
         O->>B: Create code from findings
         B-->>O: Code ready
-        O->>O: Run tests
+        O->>T: Write tests for new code
+        T-->>O: Tests written
+        O->>O: Run test suite
     end
 
     rect rgb(248, 245, 240)
-        Note over O,V: Phase 3 — Review
-        O->>V: Check against standards
-        V-->>O: Issues found
-        O->>O: Fix issues
+        Note over O,V: Phase 3 — Review & Fix
+        O->>V: Check all changes against standards
+        V-->>O: 2 blockers, 1 warning
+        O->>B: Fix blocker in validation
+        B-->>O: Fixed
+        O->>T: Add missing test case
+        T-->>O: Test added
+        O->>O: Re-run tests
     end
 
     rect rgb(248, 240, 240)
-        Note over O,C: Phase 4 — Challenge
+        Note over O,C: Phase 4 — Challenge & Fix
         O->>C: Simulate lead reviewer
-        C-->>O: Questions + fix routing
-        O->>O: Address challenges
+        C-->>O: 3 questions + fix routing
+        C-->>O: Q1 needs research, Q2 needs code fix
+        O->>R: Verify Q1 claim
+        R-->>O: Confirmed — no change needed
+        O->>B: Fix Q2 in invoices.go
+        B-->>O: Fixed
+        O->>O: Re-run tests
     end
 
     O-->>You: All checks pass — submit?
