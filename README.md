@@ -85,24 +85,16 @@ gh auth login
 
 ### Installation
 
-**Option A: From the marketplace**
+> This plugin is not yet on the official Claude Code marketplace. For now, install using one of the options below.
 
-```bash
-# Add the marketplace (one time)
-claude plugin marketplace add pablocaeg/claude-army
-
-# Install the plugin
-claude plugin install claude-army@claude-army-marketplace --scope user
-```
-
-**Option B: From local directory**
+**Option A: As a plugin (recommended)**
 
 ```bash
 git clone https://github.com/pablocaeg/claude-army.git
 claude plugin install ./claude-army --scope user
 ```
 
-**Option C: Standalone agent (no plugin system needed)**
+**Option B: Standalone agent (no plugin system needed)**
 
 ```bash
 git clone https://github.com/pablocaeg/claude-army.git
@@ -117,7 +109,7 @@ Open Claude Code in any project and run:
 /claude-army:analyze
 ```
 
-If it responds, you're set. If using Option C, use `@forge` instead.
+If it responds, you're set. If using Option B, use `@forge` instead.
 
 <br>
 
