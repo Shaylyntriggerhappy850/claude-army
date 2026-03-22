@@ -15,7 +15,7 @@ graph TD
     subgraph input [" What you provide "]
         A["Your task description"]
         B["Project codebase"]
-        C["PR review history"]
+        C["PR review access"]
     end
 
     subgraph forge [" Forge — analyzes everything "]
@@ -122,7 +122,7 @@ Every agent team is tailored to the specific project. The forge reads the actual
 
 ### Reviewer Modeling
 
-One thing I found useful while building this: reading through a project's PR review history teaches you more than reading the source code. The forge tries to capture that by extracting the lead reviewer's actual comments and building an agent that raises similar concerns before you submit.
+One thing I found useful while building this: reading through a project's PR review access teaches you more than reading the source code. The forge tries to capture that by extracting the lead reviewer's actual comments and building an agent that raises similar concerns before you submit.
 
 ```mermaid
 graph LR
